@@ -1,8 +1,12 @@
-<div class="date">{{data.date | date:'EEEE, d MMMM'}}</div>
-<div class="mainInfo">{{ data.city }}</div>
+<div class="date">{{data.list[0].dt | date:'EEEE, d MMMM'}}</div>
+<div class="mainInfo">
+  <div class="cityInfo">{{ data.city.name }}, {{ data.city.country }}</div>
+  <div class="temperature">{{ data.list[0].main.temp }}&deg; C</div>
+  <div class="typeWeather"><span class="icon">!</span>{{ data.list[0].weather[0].main }}</div>
+</div>
 <div class="secondaryInfo">
-  <span>Pressure {{ data.pressure}}</span>
-  <span>Humidity {{ data.humidity }}</span>
-  <span>Wind Speed {{ data.windSpeed }}m/s</span>
-  <span>Clouds {{ data.clouds }}%</span>
+  <span>Pressure {{ data.list[0].main.pressure}}</span>
+  <span>Humidity {{ data.list[0].main.humidity }}</span>
+  <span>Wind Speed {{ data.list[0].wind.speed }}m/s</span>
+  <span>Clouds {{ data.list[0].clouds.all }}%</span>
 </div>

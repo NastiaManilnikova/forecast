@@ -9,14 +9,7 @@ export class CurrentWeaterComponent implements OnInit {
 
   constructor() { }
 
-  data = {
-    date: new Date(),
-    city: 'London',
-    pressure: 1002,
-    humidity: 10,
-    windSpeed: 6,
-    clouds: 40
-  };
+  @Input() data: Object;
 
   ngOnInit() {
   }
