@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   @Output() onChangeCityCb = new EventEmitter();
 
   onChangeCity(event) {
-    console.log(event);
     this.onChangeCityCb.emit(event.target.value);
   }
 

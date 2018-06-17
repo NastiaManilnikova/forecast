@@ -2,11 +2,11 @@
 <div class="mainInfo">
   <div class="cityInfo">{{ data.city.name }}, {{ data.city.country }}</div>
   <div class="temperature">{{ data.list[0].main.temp }}&deg; C</div>
-  <div class="typeWeather"><span class="icon">!</span>{{ data.list[0].weather[0].main }}</div>
+  <div class="typeWeather"><span class="icon"><img src="http://openweathermap.org/img/w/{{ data.list[0].weather[0].icon }}.png"></span>{{ data.list[0].weather[0].main }}</div>
 </div>
 <div class="secondaryInfo">
-  <span>Pressure {{ data.list[0].main.pressure}}</span>
-  <span>Humidity {{ data.list[0].main.humidity }}</span>
-  <span>Wind Speed {{ data.list[0].wind.speed }}m/s</span>
-  <span>Clouds {{ data.list[0].clouds.all }}%</span>
+  <span><span class="description">Pressure</span> {{ data.list[0].main.pressure}}</span>
+  <span><span class="description">Humidity</span> {{ data.list[0].main.humidity }}</span>
+  <span><span class="description">Wind Speed</span> {{ data.list[0].wind.speed }}m/s</span>
+  <span><span class="description">Clouds</span> {{ data.list[0].clouds.all }}%</span>
 </div>
