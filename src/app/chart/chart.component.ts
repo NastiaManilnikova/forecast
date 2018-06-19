@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
@@ -6,7 +8,7 @@ import {Component, OnInit, Input, OnChanges} from '@angular/core';
 })
 export class TabsComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) { }
 
   ngOnInit() {
   }
@@ -26,7 +28,7 @@ export class TabsComponent implements OnInit, OnChanges {
       });
 
       this.barChartLabels = changes.data.currentValue.list.map((item) => {
-        return item.dt_txt;
+        return this.datePipe.transform(new Date(item.dt_txt), 'MMM d, h:mm a');
       });
 
       this.currentProperty = 'wind';
@@ -39,8 +41,6 @@ export class TabsComponent implements OnInit, OnChanges {
 
   @Input() data;
 
-
-
   public barChartLabels:string[];
   public barChartData:any[];
   public allData = {};
@@ -48,7 +48,20 @@ export class TabsComponent implements OnInit, OnChanges {
 
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    maintainAspectRatio: false,
+    responsive: true,
+    scales: {
+      yAxes: [{
+        gridLines: {
+          drawOnChartArea: false
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          drawOnChartArea: false
+        }
+      }]
+    }
   };
 
   public barChartType:string = 'bar';

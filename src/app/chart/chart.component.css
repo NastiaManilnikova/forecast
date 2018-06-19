@@ -1,0 +1,27 @@
+.tabs {
+  padding: 10px 10px 0 20px;
+}
+
+button {
+  padding: 10px 15px;
+  border-bottom-width: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  border-color: rgb(209, 209, 209);
+  border-style: solid;
+}
+
+.chart {
+  background: #F5F5F5;
+  padding-top: 15px;
+}
+
+.selected {
+  background: #F5F5F5;
+  font-weight: 600;
+}

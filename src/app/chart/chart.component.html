@@ -1,0 +1,17 @@
+<div class="tabs">
+  <button (click)="updateChart('wind')" [class.selected]="currentProperty === 'wind'">Wind</button>
+  <button (click)="updateChart('temprature')" [class.selected]="currentProperty === 'temprature'">Temprature</button>
+  <button (click)="updateChart('pressure')" [class.selected]="currentProperty === 'pressure'">Pressure</button>
+  <button (click)="updateChart('humidity')" [class.selected]="currentProperty === 'humidity'">Humidity</button>
+</div>
+<div class="chart">
+  <div>
+    <canvas baseChart height="350px"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="false"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>
