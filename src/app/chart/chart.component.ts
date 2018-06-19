@@ -2,11 +2,11 @@ import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css']
+  selector: 'app-chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.css']
 })
-export class TabsComponent implements OnInit, OnChanges {
+export class ChartComponent implements OnInit, OnChanges {
 
   constructor(private datePipe: DatePipe) { }
 
@@ -15,19 +15,14 @@ export class TabsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if (changes.data) {
-      this.allData['temprature'] =[];
-      this.allData['pressure'] =[];
-      this.allData['humidity'] =[];
-      this.allData['wind'] =[];
-
-      changes.data.currentValue.list.forEach((item) => {
-        this.allData['temprature'].push(item.main.temp);
+      changes.data.currentValue.list.forEach((item: any) => {
+        this.allData['temperature'].push(item.main.temp);
         this.allData['pressure'].push(item.main.pressure);
         this.allData['humidity'].push(item.main.humidity);
         this.allData['wind'].push(item.wind.speed);
       });
 
-      this.barChartLabels = changes.data.currentValue.list.map((item) => {
+      this.barChartLabels = changes.data.currentValue.list.map((item: any) => {
         return this.datePipe.transform(new Date(item.dt_txt), 'MMM d, h:mm a');
       });
 
@@ -39,14 +34,19 @@ export class TabsComponent implements OnInit, OnChanges {
     }
   }
 
-  @Input() data;
+  @Input() data: any;
 
-  public barChartLabels:string[];
-  public barChartData:any[];
-  public allData = {};
-  public currentProperty:string;
+  public barChartLabels: string[];
+  public barChartData: any[];
+  public allData = {
+    temperature: [],
+    pressure: [],
+    humidity: [],
+    wind: []
+  };
+  public currentProperty: string;
 
-  public barChartOptions:any = {
+  public barChartOptions: any = {
     scaleShowVerticalLines: false,
     maintainAspectRatio: false,
     responsive: true,
@@ -64,20 +64,9 @@ export class TabsComponent implements OnInit, OnChanges {
     }
   };
 
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
+  public barChartType: string = 'bar';
 
-  // events
-  public chartClicked(e:any):void {
-    console.log(this.data);
-    console.log(e);
-  }
-
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
-
-  updateChart(type) {
+  updateChart(type: string): void {
     this.currentProperty = type;
 
     this.barChartData = [
@@ -85,19 +74,5 @@ export class TabsComponent implements OnInit, OnChanges {
     ];
   }
 
-  // public randomize():void {
-  //   // Only Change 3 values
-  //   let data = [
-  //     Math.round(Math.random() * 100),
-  //     59,
-  //     80,
-  //     (Math.random() * 100),
-  //     56,
-  //     (Math.random() * 100),
-  //     40];
-  //   let clone = JSON.parse(JSON.stringify(this.barChartData));
-  //   clone[0].data = data;
-  //   this.barChartData = clone;
-  // }
 }
 

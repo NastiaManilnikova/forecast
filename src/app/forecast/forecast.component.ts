@@ -9,7 +9,7 @@ export class ForecastComponent implements OnInit {
 
   constructor() { }
 
-  @Input() data: Object;
+  @Input() data: any;
 
   ngOnInit() {
   }

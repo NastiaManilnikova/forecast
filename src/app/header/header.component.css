@@ -12,3 +12,17 @@ input {
   width: 30%;
   padding: 10px;
 }
+
+.error {
+  outline: 1px red solid;
+}
+
+.errorMsg {
+  color: red;
+}
+
+.title img {
+  vertical-align: middle;
+  width: 35px;
+  margin-right: 10px;
+}

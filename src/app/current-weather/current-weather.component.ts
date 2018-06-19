@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-current-weater',
-  templateUrl: './current-weater.component.html',
-  styleUrls: ['./current-weater.component.css']
+  selector: 'app-current-weather',
+  templateUrl: './current-weather.component.html',
+  styleUrls: ['./current-weather.component.css']
 })
-export class CurrentWeaterComponent implements OnInit {
+export class CurrentWeatherComponent implements OnInit {
 
   constructor() { }
 

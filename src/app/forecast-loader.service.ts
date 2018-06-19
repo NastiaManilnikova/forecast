@@ -9,7 +9,7 @@ export class ForecastLoaderService {
 
   constructor(private httpClient: HttpClient) { }
 
-  appid = '19e5bf2595560c8f62b65a2b86a6c463';
+  private appid: string = '19e5bf2595560c8f62b65a2b86a6c463';
 
   public get(cityName): Observable<any>{
     const httpParams: HttpParams = new HttpParams()

@@ -11,18 +11,28 @@ export class MainComponent implements OnInit {
   constructor(private loader: ForecastLoaderService) {
   }
 
-  dataFromServer = null;
+  public dataFromServer: any;
+  public isValid: boolean = true;
 
   ngOnInit() {
     this.getWeather('Kiev');
   }
 
-  public getWeather(city) {
+  public getWeather(city: string): void {
+    if (!city) {
+      this.isValid = false;
+
+      return;
+    }
+
     this.loader.get(city).subscribe(
       data => {
+        this.isValid = true;
         this.dataFromServer = data;
       },
-      err => console.error(err)
+      err => {
+        this.isValid = false;
+      }
     );
   }
 }

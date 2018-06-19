@@ -1,4 +1,4 @@
-<div>
-  <app-header (onChangeCityCb)="getWeather($event)"></app-header>
-  <app-content *ngIf="dataFromServer" [dataFromServer]="dataFromServer"></app-content>
+<div *ngIf="dataFromServer">
+  <app-header (onChangeCityCb)="getWeather($event)" [isValid]="isValid" [data]="dataFromServer"></app-header>
+  <app-content [data]="dataFromServer"></app-content>
 </div>

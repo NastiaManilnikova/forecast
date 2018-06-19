@@ -9,7 +9,7 @@ export class ContentComponent implements OnInit {
 
   constructor() { }
 
-  @Input('dataFromServer') dataWeather: Object;
+  @Input() data: any;
 
   ngOnInit() {
   }

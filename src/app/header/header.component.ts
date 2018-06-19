@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +12,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Output() onChangeCityCb = new EventEmitter();
+  @Output() onChangeCityCb: EventEmitter<any> = new EventEmitter();
+  @Input() isValid: boolean;
+  @Input() data: any;
 
-  onChangeCity(event) {
+  public onChangeCity(event: any): void {
+    if (event.type ==='keyup' && event.keyCode !== 13) {
+      return;
+    }
+
     this.onChangeCityCb.emit(event.target.value);
   }
-
 }

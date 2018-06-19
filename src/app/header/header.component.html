@@ -1,7 +1,8 @@
 <div class="header">
-  <div>
-    <span class="icon"></span>
+  <div class="title">
+    <img src="http://openweathermap.org/img/w/{{ data.list[0].weather[0].icon }}.png">
     <span>Forecast</span>
   </div>
-  <input type="text" placeholder="City or zipcode" (blur)="onChangeCity($event)">
+  <div *ngIf="!isValid" class="errorMsg">City not found!</div>
+  <input type="text" placeholder="City" (blur)="onChangeCity($event)" (keyup)="onChangeCity($event)" [class.error]="!isValid">
 </div>
