@@ -15,6 +15,11 @@ export class ChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if (changes.data) {
+    this.allData['temperature'] = [];
+        this.allData['pressure'] = [];
+        this.allData['humidity']= [];
+        this.allData['wind'] = [];
+
       changes.data.currentValue.list.forEach((item: any) => {
         this.allData['temperature'].push(item.main.temp);
         this.allData['pressure'].push(item.main.pressure);
@@ -38,12 +43,7 @@ export class ChartComponent implements OnInit, OnChanges {
 
   public barChartLabels: string[];
   public barChartData: any[];
-  public allData = {
-    temperature: [],
-    pressure: [],
-    humidity: [],
-    wind: []
-  };
+  public allData = {};
   public currentProperty: string;
 
   public barChartOptions: any = {

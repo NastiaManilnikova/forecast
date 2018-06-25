@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Output() onChangeCityCb: EventEmitter<any> = new EventEmitter();
+  @Output() onChangeCityCb: EventEmitter<string> = new EventEmitter();
   @Input() isValid: boolean;
   @Input() data: any;
 
